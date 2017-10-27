@@ -11,5 +11,7 @@ set(SOURCE_FILES src/main.cpp
 #头文件列表
 set(INC_DIR ./include)
 
+#需要链接库的位置
+link_directories(./lib)
 
 add_executable(preliminary ${SOURCE_FILES})

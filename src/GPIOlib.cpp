@@ -25,7 +25,6 @@ int GPIO::init() {
 }
 
 int GPIO::controlLeft(int direction, int speed) {
-    std::cout << stimulate::left << std::endl;
     srandom(time(nullptr));
     double rand_speed = speed * ((double)random() / RAND_MAX - 0.5) / 10;
 
@@ -39,7 +38,6 @@ int GPIO::controlLeft(int direction, int speed) {
 }
 
 int GPIO::controlRight(int direction, int speed) {
-    std::cout << "here" << std::endl;
     srandom(time(nullptr) + 100);
     double rand_speed = speed * ((double)random() /RAND_MAX - 0.5) / 10;
 
@@ -69,10 +67,8 @@ int GPIO::resetCounter() {
 }
 
 void GPIO::getCounter(int *countLeft, int *countRight) {
-    std::cout << stimulate::left_distance << std::endl;
     *countLeft = (int) stimulate::left_distance;
     *countRight = (int) stimulate::right_distance;
-    std::cout << *countLeft + " " + *countRight << std::endl;
 }
 
 void GPIO::delay(int milliseconds) {

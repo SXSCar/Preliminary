@@ -1,2 +1,6 @@
-# preliminary
-code for preliminary contest
+# Preliminary
+
+Code for preliminary contest.
+
+    
+

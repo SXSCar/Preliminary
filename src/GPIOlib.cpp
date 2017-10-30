@@ -26,7 +26,7 @@ int GPIO::init() {
 
 int GPIO::controlLeft(int direction, int speed) {
     srandom(time(nullptr));
-    double rand_speed = speed * ((double)random() / RAND_MAX - 0.5) / 10;
+    double rand_speed = speed * ((double) random() / RAND_MAX - 0.5) / 10;
 
     if (direction == FORWARD) {
         stimulate::left = speed + rand_speed;
@@ -39,7 +39,7 @@ int GPIO::controlLeft(int direction, int speed) {
 
 int GPIO::controlRight(int direction, int speed) {
     srandom(time(nullptr) + 100);
-    double rand_speed = speed * ((double)random() /RAND_MAX - 0.5) / 10;
+    double rand_speed = speed * ((double) random() / RAND_MAX - 0.5) / 10;
 
     if (direction == FORWARD) {
         stimulate::right = speed + rand_speed;

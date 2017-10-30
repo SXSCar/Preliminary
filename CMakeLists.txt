@@ -6,7 +6,8 @@ set(CMAKE_CXX_STANDARD 11)
 #源文件列表
 set(SOURCE_FILES src/main.cpp
         src/GPIOlib.cpp
-        header/GPIOlib.h)
+        header/GPIOlib.h
+        src/krayc.cpp)
 
 #头文件列表
 set(INC_DIR ./include)

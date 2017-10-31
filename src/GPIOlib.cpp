@@ -5,7 +5,7 @@
 #include "../header/GPIOlib.h"
 #include <cstdlib>
 #include <ctime>
-#include <iostream>
+#include <unistd.h>
 //该文件用于模拟不稳定的加速电机
 
 namespace stimulate {
@@ -26,7 +26,7 @@ int GPIO::init() {
 
 int GPIO::controlLeft(int direction, int speed) {
     srandom(time(nullptr));
-    double rand_speed = speed * ((double) random() / RAND_MAX - 0.5) / 10;
+    double rand_speed = speed * ((double) random() / RAND_MAX - 0.5) / 5;
 
     if (direction == FORWARD) {
         stimulate::left = speed + rand_speed;
@@ -39,7 +39,7 @@ int GPIO::controlLeft(int direction, int speed) {
 
 int GPIO::controlRight(int direction, int speed) {
     srandom(time(nullptr) + 100);
-    double rand_speed = speed * ((double) random() / RAND_MAX - 0.5) / 10;
+    double rand_speed = speed * ((double) random() / RAND_MAX - 0.5) / 5;
 
     if (direction == FORWARD) {
         stimulate::right = speed + rand_speed;
@@ -72,6 +72,7 @@ void GPIO::getCounter(int *countLeft, int *countRight) {
 }
 
 void GPIO::delay(int milliseconds) {
+    //sleep(1);
     double time = milliseconds / 100;
     stimulate::left_distance += stimulate::left * time;
     stimulate::right_distance += stimulate::right * time;

@@ -51,52 +51,34 @@ void test() {
         double distanceRight = readingRight * 63.4 * M_PI / 390;
 
         double deltaDistance = distanceRight - distanceLeft;
+        isLeftFaster /= 2;
+        isLeftFaster -= deltaDistance;
 
-        if (deltaDistance > 0) {
-            double r = distanceRight / distanceLeft;
 
+        leftTotalDistance += distanceLeft;
+        rightTotalDistance += distanceRight;
+
+        if (isLeftFaster < 0) {
             if (leftSpeed < 0.95 * MAX_SPEED) {
-                double deltaSpeed = (r * rightSpeed - leftSpeed);
-                leftSpeed += int(deltaSpeed);
+                leftSpeed++;
             } else {
-                double deltaSpeed = rightSpeed - leftSpeed / r;
-                rightSpeed -= int(deltaSpeed);
+                rightSpeed -= 2;
             }
 
-            printf("Right %f, %f, %d, %d\n", distanceLeft, distanceRight, leftSpeed, rightSpeed);
+            printf("Left %f, %f, %d, %d\n", distanceLeft, distanceRight, leftSpeed, rightSpeed);
 
-            isLeftFaster = 1;
-        } else if (deltaDistance < 0) {
-            double r = distanceLeft / distanceRight;
-
+        } else if (isLeftFaster > 0) {
             if (rightSpeed < 0.95 * MAX_SPEED) {
-                double deltaSpeed = r * leftSpeed - rightSpeed;
-                rightSpeed += int(deltaSpeed);
+                rightSpeed++;
             } else {
-                double deltaSpeed = leftSpeed - rightSpeed / r;
-                leftSpeed -= int(deltaSpeed);
+                leftSpeed -= 2;
             }
 
-            printf("Left  %f, %f, %d, %d\n", distanceLeft, distanceRight, leftSpeed, rightSpeed);
+            printf("Right  %f, %f, %d, %d\n", distanceLeft, distanceRight, leftSpeed, rightSpeed);
 
-            isLeftFaster = -1;
-        } else {
-            printf("Even\n");
-            if (isLeftFaster > 0) {
-                if (rightSpeed < MAX_SPEED) {
-                    rightSpeed++;
-                } else {
-                    leftSpeed--;
-                }
-            } else if (isLeftFaster < 0) {
-                if (leftSpeed < MAX_SPEED) {
-                    leftSpeed++;
-                } else {
-                    rightSpeed--;
-                }
-            }
-            isLeftFaster = 0;
+            isLeftFaster += deltaDistance;
         }
+
 
         if (leftSpeed < MAX_SPEED) {
             leftSpeed++;
@@ -105,8 +87,7 @@ void test() {
             rightSpeed++;
         }
 
-        leftTotalDistance += distanceLeft;
-        rightTotalDistance += distanceRight;
+
 
         //TODO: 此处参数需要调整
         if (rightTotalDistance - leftTotalDistance > 0.25 * WHEEL_AXIS_DISTANCE) {

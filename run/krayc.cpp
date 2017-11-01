@@ -3,12 +3,10 @@
 //
 
 #include <iostream>
-#include <cmath>
 
-#include "../header/GPIOlib.h"
-
-#define WHEEL_AXIS_DISTANCE 200 // in mm
+#define WHEEL_AXIS_DISTANCE 150 // in mm
 #define MAX_SPEED 50
+#define M_PI 3.1415926
 
 using namespace std;
 using namespace GPIO;
@@ -86,8 +84,6 @@ void test() {
         if (rightSpeed < MAX_SPEED) {
             rightSpeed++;
         }
-
-
 
         //TODO: 此处参数需要调整
         if (rightTotalDistance - leftTotalDistance > 0.25 * WHEEL_AXIS_DISTANCE) {

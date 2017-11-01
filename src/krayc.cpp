@@ -7,7 +7,7 @@
 
 #include "../header/GPIOlib.h"
 
-#define WHEEL_AXIS_DISTANCE 200 // in mm
+#define WHEEL_AXIS_DISTANCE 150 // in mm
 #define MAX_SPEED 50
 
 using namespace std;

@@ -1,2 +1,2 @@
-sudo g++ -o test krayc.cpp -L. -lwiringPi -lGPIO -lpthread
-sudo ./test
+sudo g++ -o krayc krayc.cpp -L. -lwiringPi -lGPIO -lpthread
+sudo ./krayc
